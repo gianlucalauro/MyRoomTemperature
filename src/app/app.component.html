@@ -1,0 +1,18 @@
+<p>
+  <mat-toolbar color="primary">
+    <mat-icon>dashboard</mat-icon>
+     &nbsp; &nbsp;
+    <span>Dashboard Lauro</span>
+
+    <button mat-icon-button style="position: absolute; right: 3%;" (click)="openDialog()">
+      <mat-icon>info</mat-icon>
+    </button>
+
+  </mat-toolbar>
+</p>
+
+<mat-tab-group>
+  <mat-tab label="Temperature Camera"> <app-room-temperature></app-room-temperature> </mat-tab>
+  <mat-tab label="Temperature dei Raspberry"> <app-raspberry> </app-raspberry> </mat-tab>
+</mat-tab-group>
+
