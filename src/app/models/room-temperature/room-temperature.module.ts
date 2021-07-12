@@ -1,9 +1,7 @@
 export class RoomTemperatureDataList {
-  count: number;
   data: Array<RoomTemperatureData>;
-  constructor() {
-    this.count = 0;
-    this.data = [];
+  constructor(data: Array<RoomTemperatureData>) {
+    this.data = data;
   }
 
   get(index: number): RoomTemperatureData {

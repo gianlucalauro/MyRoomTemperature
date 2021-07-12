@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ApiCallsService} from "../../../api-calls.service";
 
 @Component({
   selector: 'app-table',
@@ -9,12 +10,10 @@ export class TableComponent implements OnInit {
   displayedColumns: string[] = ['date', 'temperature', 'humidity'];
   dataSource = ELEMENT_DATA;
 
-  constructor() { }
+  constructor(private apiCallsService: ApiCallsService) { }
 
   ngOnInit(): void {
-
-
-
+    console.log(this.apiCallsService.roomTemperatureDataList)
   }
 
 }
@@ -27,5 +26,5 @@ export interface TableData {
 
 const ELEMENT_DATA: TableData[] = [
   //get the data from API
-  {date: "prova", temperature: 31.50, humidity: 50}
+  //{date: "prova", temperature: 31.50, humidity: 50}
 ];

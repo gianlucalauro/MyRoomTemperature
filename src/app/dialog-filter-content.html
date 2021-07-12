@@ -1,0 +1,36 @@
+<mat-dialog-content class="mat-typography">
+  <h3> Filtro </h3>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Limite</mat-label>
+    <input matInput [(ngModel)]="data.limit" type="number" min="0">
+  </mat-form-field>
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Granularità</mat-label>
+    <mat-select [(ngModel)]="data.granularity">
+      <mat-option value="2m">2 Minuti</mat-option>
+      <mat-option value="30m">30 Minuti</mat-option>
+      <mat-option value="1h">1 Ora</mat-option>
+      <mat-option value="6h">6 Ore</mat-option>
+      <mat-option value="12h">12 Ore</mat-option>
+      <mat-option value="1d">1 Giorno</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Intervallo di tempo</mat-label>
+    <mat-date-range-input [rangePicker]="picker">
+      <input matStartDate placeholder="Da" [(ngModel)]="data.from" disabled>
+      <input matEndDate placeholder="A" [(ngModel)]="data.to" disabled>
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker disabled="false"></mat-date-range-picker>
+  </mat-form-field>
+
+
+  <br>
+  <button mat-button [mat-dialog-close]="data">Save</button>
+</mat-dialog-content>
