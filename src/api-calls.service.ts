@@ -18,7 +18,8 @@ export class ApiCallsService {
 
   constructor(private http: HttpClient) { }
 
-  roomTemperatureDataList = [];
+  private roomTemperatureData = {} as RoomTemperatureData;
+  roomTemperatureDataList: RoomTemperatureData[] = [];
 
   getRoomTemperatures() {
     console.log(this.query)
@@ -28,11 +29,20 @@ export class ApiCallsService {
           for (let i in response.results[0].series[0].values)
             if (response.results[0].series[0].values.hasOwnProperty(i))
             {
-              // @ts-ignore
-              this.roomTemperatureDataList.push(response.results[0].series[0].values[i]);
+              this.roomTemperatureData.date = response.results[0].series[0].values[i][0]
+              this.roomTemperatureData.temperature = response.results[0].series[0].values[i][1]
+              this.roomTemperatureData.humidity = response.results[0].series[0].values[i][2]
+
+              this.roomTemperatureDataList.push(this.roomTemperatureData);
             }
         }
       );
   }
 
+}
+
+export interface RoomTemperatureData {
+  date: any;
+  temperature: any;
+  humidity: any;
 }
