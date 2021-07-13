@@ -9,7 +9,16 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog
 export class AppComponent {
   title = 'MyRoomTemperature';
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog) {
+    if (localStorage.getItem("limit") == null || localStorage.getItem("limit") == 'undefined')
+      localStorage.setItem("limit", "25");
+    if (localStorage.getItem("granularity") == null || localStorage.getItem("granularity") == 'undefined')
+      localStorage.setItem("granularity", "1h");
+    if (localStorage.getItem("from") == null || localStorage.getItem("from") == 'undefined')
+      localStorage.setItem("from", String(Date.now() - 86400000)); //one hour in milliseconds
+    if (localStorage.getItem("to") == null || localStorage.getItem("to") == 'undefined')
+      localStorage.setItem("to", String(Date.now()));
+  }
 
   openDialog() {
     const dialogRef = this.dialog.open(DialogContent);
