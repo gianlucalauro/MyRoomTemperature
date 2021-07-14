@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ApiCallsService} from "../../../api-calls.service";
+import {MatTableDataSource} from "@angular/material/table";
+import {MatPaginator} from "@angular/material/paginator";
+import {MatSort} from "@angular/material/sort";
+
 
 @Component({
   selector: 'app-table',
@@ -8,7 +12,10 @@ import {ApiCallsService} from "../../../api-calls.service";
 })
 export class TableComponent implements OnInit {
   displayedColumns: string[] = ['date', 'temperature', 'humidity'];
-  dataSource: TableData[] = [];
+
+  dataSource = new MatTableDataSource<TableData>();
+  @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
+  @ViewChild(MatSort, { static: false }) sort!: MatSort;
 
   roomTemperatureDataList: TableData[] = [];
 
@@ -29,7 +36,8 @@ export class TableComponent implements OnInit {
             }
           }
         );
-        this.dataSource = this.roomTemperatureDataList;
+        this.dataSource.data = this.roomTemperatureDataList;
+        this.dataSource.paginator = this.paginator
       }
     );
   }

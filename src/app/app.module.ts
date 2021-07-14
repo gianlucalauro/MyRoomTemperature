@@ -20,6 +20,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule, MatOptionModule} from "@angular/material/core";
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from "@angular/material/sort";
 
 import { RoomTemperatureComponent } from './pages/room-temperature/room-temperature.component';
 import { RaspberryComponent } from './pages/raspberry/raspberry.component';
@@ -53,6 +55,8 @@ import {MatSelectModule} from "@angular/material/select";
     HttpClientModule,
     FormsModule,
     MatOptionModule,
+    MatPaginatorModule,
+    MatSortModule,
     MatSelectModule
   ],
   providers: [],
