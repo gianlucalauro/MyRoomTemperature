@@ -36,7 +36,6 @@ export class AppComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
       try {
         localStorage.setItem("limit", result.limit);
         localStorage.setItem("granularity", result.granularity)
