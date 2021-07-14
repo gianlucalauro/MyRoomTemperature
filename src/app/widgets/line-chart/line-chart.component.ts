@@ -24,9 +24,9 @@ export class LineChartComponent implements OnInit {
               // @ts-ignore
               this.dateList.push(new Date(element[0]).toLocaleString());
               // @ts-ignore
-              this.humidityList.push(element[1]);
+              this.humidityList.push(element[1].toFixed(2));
               // @ts-ignore
-              this.temperatureList.push(element[2]);
+              this.temperatureList.push(element[2].toFixed(2));
             }
           }
         );
@@ -35,6 +35,15 @@ export class LineChartComponent implements OnInit {
   }
 
   chartOption: EChartsOption = {
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'cross',
+        label: {
+          backgroundColor: '#6a7985'
+        }
+      }
+    },
     xAxis: {
       type: 'category',
       data: this.dateList,
@@ -49,12 +58,14 @@ export class LineChartComponent implements OnInit {
       {
         name: 'Temperatura',
         type: 'line',
+        areaStyle: { color: 'blue', opacity: 0.5},
         data: this.temperatureList,
         stack: 'counts',
       },
       {
         name: 'Umidità',
         type: 'line',
+        areaStyle: { color: 'green', opacity: 0.5},
         data: this.humidityList,
         stack: 'counts',
       },
