@@ -1,3 +1,14 @@
 .gauge {
-  height: 350px;
+  height: 330px;
+  width: 330px;
+}
+
+#gaugeMinHumidity {
+  display: inline-block;
+}
+#gaugeAvgHumidity {
+  display: inline-block;
+}
+#gaugeMaxHumidity {
+  display: inline-block;
 }

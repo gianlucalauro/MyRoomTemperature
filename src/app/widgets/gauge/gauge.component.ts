@@ -11,13 +11,11 @@ export class GaugeComponent implements OnInit {
 
   constructor(private apiCallsService: ApiCallsService) { }
 
-  dateList = [];
-  temperatureList = [];
   humidityList = [];
 
-  minTemp = [];
-  avgTemp = [];
-  maxTemp = [];
+  minHumidity = [];
+  avgHumidity = [];
+  maxHumidity = [];
 
   ngOnInit(): void {
     this.apiCallsService.getRoomTemperatures().subscribe(
@@ -26,57 +24,56 @@ export class GaugeComponent implements OnInit {
           (element: any) => {
             if (element[0] != null || element[1] != null || element[2] != null) {
               // @ts-ignore
-              this.dateList.push(new Date(element[0]).toLocaleString());
-              // @ts-ignore
               this.humidityList.push(element[1]);
-              // @ts-ignore
-              this.temperatureList.push(element[2]);
             }
           }
         );
         // @ts-ignore
-        this.minTemp.push(Math.min(...this.temperatureList).toFixed(2));
+        this.minHumidity.push(Math.min(...this.humidityList).toFixed(2));
         // @ts-ignore
-        this.avgTemp.push((this.temperatureList.reduce((a, b) => a + b, 0)/this.temperatureList.length).toFixed(2));
+        this.avgHumidity.push((this.humidityList.reduce((a, b) => a + b, 0)/this.humidityList.length).toFixed(2));
         // @ts-ignore
-        this.maxTemp.push(Math.max(...this.temperatureList).toFixed(2));
+        this.maxHumidity.push(Math.max(...this.humidityList).toFixed(2));
       }
     );
   }
 
-  gaugeMinTemp: EChartsOption = {
+  gaugeMinHumidity: EChartsOption = {
+    color: "green",
     legend: {
-      data: ['Temperatura Minima']
+      data: ['Umidità Minima %']
     },
     series: [
       {
-        name: 'Temperatura Minima',
+        name: 'Umidità Minima %',
         type: 'gauge',
-        data: this.minTemp,
+        data: this.minHumidity,
       },
     ],
   };
-  gaugeAvgTemp: EChartsOption = {
+  gaugeAvgHumidity: EChartsOption = {
+    color: "green",
     legend: {
-      data: ['Temperatura Media']
+      data: ['Umidità Media %']
     },
     series: [
       {
-        name: 'Temperatura Media',
+        name: 'Umidità Media %',
         type: 'gauge',
-        data: this.avgTemp,
+        data: this.avgHumidity,
       },
     ],
   };
-  gaugeMaxTemp: EChartsOption = {
+  gaugeMaxHumidity: EChartsOption = {
+    color: "green",
     legend: {
-      data: ['Temperatura Massima']
+      data: ['Umidità Massima %']
     },
     series: [
       {
-        name: 'Temperatura Massima',
+        name: 'Umidità Massima %',
         type: 'gauge',
-        data: this.maxTemp,
+        data: this.maxHumidity,
       },
     ],
   };
