@@ -20,7 +20,7 @@ export class LineChartComponent implements OnInit {
       (data: any) => {
         data.results[0].series[0].values.forEach(
           (element: any) => {
-            if (element[0] != null || element[1] != null || element[2] != null) {
+            if (element[0] != null && element[1] != null && element[2] != null) {
               // @ts-ignore
               this.dateList.push(new Date(element[0]).toLocaleString());
               // @ts-ignore

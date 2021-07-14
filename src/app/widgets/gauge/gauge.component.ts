@@ -22,7 +22,7 @@ export class GaugeComponent implements OnInit {
       (data: any) => {
         data.results[0].series[0].values.forEach(
           (element: any) => {
-            if (element[0] != null || element[1] != null || element[2] != null) {
+            if (element[0] != null && element[1] != null && element[2] != null) {
               // @ts-ignore
               this.humidityList.push(element[1]);
             }

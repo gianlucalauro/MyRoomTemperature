@@ -26,7 +26,7 @@ export class TableComponent implements OnInit {
       (data: any) => {
         data.results[0].series[0].values.forEach(
           (element: any) => {
-            if (element[1] != null || element[2] != null) {
+            if (element[0] != null && element[1] != null && element[2] != null) {
               let roomTemperatureData = {
                 date: new Date(element[0]).toLocaleString(),
                 humidity: element[1].toFixed(2),
