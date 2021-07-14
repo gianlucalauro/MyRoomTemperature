@@ -1,19 +1,19 @@
-<p>
-  <mat-toolbar color="primary">
-    <mat-icon>dashboard</mat-icon>
-     &nbsp; &nbsp;
-    <span>Dashboard Lauro</span>
+<mat-toolbar color="primary">
+  <mat-icon>dashboard</mat-icon>
+   &nbsp; &nbsp;
+  <span>Dashboard Lauro</span>
 
-    <button mat-icon-button style="position: absolute; right: 10%;" (click)="openDialogFilter()">
+  <div style="position: absolute; right: 2%;">
+    <button mat-icon-button style="margin-right: 10px" (click)="openDialogFilter()">
       <mat-icon>filter_list</mat-icon>
     </button>
 
-    <button mat-icon-button style="position: absolute; right: 3%;" (click)="openDialog()">
+    <button mat-icon-button (click)="openDialog()">
       <mat-icon>info</mat-icon>
     </button>
+  </div>
 
-  </mat-toolbar>
-</p>
+</mat-toolbar>
 
 <mat-tab-group>
   <mat-tab label="Temperature Camera"> <app-room-temperature></app-room-temperature> </mat-tab>
