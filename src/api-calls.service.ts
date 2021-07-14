@@ -8,7 +8,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class ApiCallsService {
 
-  roomTemperatureBaseURL: string = "http://gianlucalauro.ddns.net:8086/query";
+  roomTemperatureBaseURL: string = "http://localhost:8086/query";
 
   from: any = localStorage.getItem("from") + "ms";
   to: any = localStorage.getItem("to") + "ms";
@@ -18,36 +18,8 @@ export class ApiCallsService {
 
   constructor(private http: HttpClient) { }
 
-  //roomTemperatureDataList: RoomTemperatureData[] = [];
-
-  /*getRoomTemperatures() {
-    console.log(this.query)
-    return this.http.get(`${(this.roomTemperatureBaseURL)}?u=${environment.username}&p=${environment.password}&q=${this.query}`)
-      .subscribe(
-        (response: any) => {
-          for (let i in response.results[0].series[0].values)
-            if (response.results[0].series[0].values.hasOwnProperty(i))
-            {
-              let roomTemperatureData = {
-                date: response.results[0].series[0].values[i][0],
-                humidity: response.results[0].series[0].values[i][1],
-                temperature: response.results[0].series[0].values[i][2]
-              } as RoomTemperatureData;
-
-              this.roomTemperatureDataList.push(roomTemperatureData);
-            }
-        }
-      );
-  }*/
-
   getRoomTemperatures() {
     return this.http.get(`${(this.roomTemperatureBaseURL)}?u=${environment.username}&p=${environment.password}&q=${this.query}`);
   }
 
 }
-
-/*export interface RoomTemperatureData {
-  date: any;
-  temperature: any;
-  humidity: any;
-}*/
