@@ -30,6 +30,7 @@ import { RaspberryComponent } from './pages/raspberry/raspberry.component';
 import {FormsModule} from "@angular/forms";
 import {MatSelectModule} from "@angular/material/select";
 import { LineChartComponent } from './widgets/line-chart/line-chart.component';
+import { GaugeComponent } from './widgets/gauge/gauge.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { LineChartComponent } from './widgets/line-chart/line-chart.component';
     DialogFilterContent,
     RoomTemperatureComponent,
     RaspberryComponent,
-    LineChartComponent
+    LineChartComponent,
+    GaugeComponent
   ],
   imports: [
     BrowserModule,
