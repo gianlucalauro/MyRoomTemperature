@@ -1,3 +1,6 @@
+<h2 style="text-align: center"> <b> Temperature </b> </h2>
+<p style="text-align: center" *ngIf="isReady">Minima: <b> {{minTemperature}} °C </b>, Media: <b> {{avgTemperature}} °C </b>, Massima: <b>{{maxTemperature}} °C </b> </p>
+
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <!-- Date Column -->
   <ng-container matColumnDef="date">

@@ -19,6 +19,14 @@ export class TableComponent implements OnInit {
 
   roomTemperatureDataList: TableData[] = [];
 
+  temperatureList = [];
+
+  minTemperature = [];
+  avgTemperature = [];
+  maxTemperature = [];
+
+  isReady: boolean = false;
+
   constructor(private apiCallsService: ApiCallsService) { }
 
   ngOnInit(): void {
@@ -32,10 +40,20 @@ export class TableComponent implements OnInit {
                 humidity: element[1].toFixed(2),
                 temperature: element[2].toFixed(2)
               } as TableData;
+              // @ts-ignore
+              this.temperatureList.push(element[2]);
               this.roomTemperatureDataList.push(roomTemperatureData);
             }
           }
         );
+        // @ts-ignore
+        this.minTemperature.push(Math.min(...this.temperatureList).toFixed(2));
+        // @ts-ignore
+        this.avgTemperature.push((this.temperatureList.reduce((a, b) => a + b, 0)/this.temperatureList.length).toFixed(2));
+        // @ts-ignore
+        this.maxTemperature.push(Math.max(...this.temperatureList).toFixed(2));
+
+        this.isReady = true;
         this.dataSource.data = this.roomTemperatureDataList;
         this.dataSource.paginator = this.paginator
       }
