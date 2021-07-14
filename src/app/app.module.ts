@@ -23,10 +23,13 @@ import {MatNativeDateModule, MatOptionModule} from "@angular/material/core";
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from "@angular/material/sort";
 
+import { NgxEchartsModule } from 'ngx-echarts';
+
 import { RoomTemperatureComponent } from './pages/room-temperature/room-temperature.component';
 import { RaspberryComponent } from './pages/raspberry/raspberry.component';
 import {FormsModule} from "@angular/forms";
 import {MatSelectModule} from "@angular/material/select";
+import { LineChartComponent } from './widgets/line-chart/line-chart.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,8 @@ import {MatSelectModule} from "@angular/material/select";
     DialogContent,
     DialogFilterContent,
     RoomTemperatureComponent,
-    RaspberryComponent
+    RaspberryComponent,
+    LineChartComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +61,10 @@ import {MatSelectModule} from "@angular/material/select";
     MatOptionModule,
     MatPaginatorModule,
     MatSortModule,
-    MatSelectModule
+    MatSelectModule,
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts')
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
