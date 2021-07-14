@@ -18,7 +18,6 @@ export class ApiCallsService {
 
   constructor(private http: HttpClient) { }
 
-  private roomTemperatureData = {} as RoomTemperatureData;
   roomTemperatureDataList: RoomTemperatureData[] = [];
 
   getRoomTemperatures() {
@@ -29,11 +28,12 @@ export class ApiCallsService {
           for (let i in response.results[0].series[0].values)
             if (response.results[0].series[0].values.hasOwnProperty(i))
             {
-              this.roomTemperatureData.date = response.results[0].series[0].values[i][0]
-              this.roomTemperatureData.temperature = response.results[0].series[0].values[i][1]
-              this.roomTemperatureData.humidity = response.results[0].series[0].values[i][2]
+              let roomTemperatureData = {} as RoomTemperatureData;
+              roomTemperatureData.date = response.results[0].series[0].values[i][0]
+              roomTemperatureData.temperature = response.results[0].series[0].values[i][1]
+              roomTemperatureData.humidity = response.results[0].series[0].values[i][2]
 
-              this.roomTemperatureDataList.push(this.roomTemperatureData);
+              this.roomTemperatureDataList.push(roomTemperatureData);
             }
         }
       );
