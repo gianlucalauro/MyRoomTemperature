@@ -8,7 +8,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class ApiCallsService {
 
-  roomTemperatureBaseURL: string = "http://192.168.1.2:8086/query";
+  roomTemperatureBaseURL: string = "http://gianlucalauro.ddns.net:8086/query";
 
   from: any = localStorage.getItem("from") + "ms";
   to: any = localStorage.getItem("to") + "ms";
@@ -18,9 +18,9 @@ export class ApiCallsService {
 
   constructor(private http: HttpClient) { }
 
-  roomTemperatureDataList: RoomTemperatureData[] = [];
+  //roomTemperatureDataList: RoomTemperatureData[] = [];
 
-  getRoomTemperatures() {
+  /*getRoomTemperatures() {
     console.log(this.query)
     return this.http.get(`${(this.roomTemperatureBaseURL)}?u=${environment.username}&p=${environment.password}&q=${this.query}`)
       .subscribe(
@@ -38,12 +38,16 @@ export class ApiCallsService {
             }
         }
       );
+  }*/
+
+  getRoomTemperatures() {
+    return this.http.get(`${(this.roomTemperatureBaseURL)}?u=${environment.username}&p=${environment.password}&q=${this.query}`);
   }
 
 }
 
-export interface RoomTemperatureData {
+/*export interface RoomTemperatureData {
   date: any;
   temperature: any;
   humidity: any;
-}
+}*/

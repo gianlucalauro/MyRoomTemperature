@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiCallsService } from "../../../api-calls.service";
 
 @Component({
   selector: 'app-room-temperature',
@@ -8,10 +7,8 @@ import { ApiCallsService } from "../../../api-calls.service";
 })
 export class RoomTemperatureComponent implements OnInit {
 
-  constructor(private apiCallsService: ApiCallsService) { }
+  constructor() { }
 
-  ngOnInit(): void {
-    this.apiCallsService.getRoomTemperatures();
-  }
+  ngOnInit(): void {}
 
 }

@@ -36,10 +36,16 @@ export class AppComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      localStorage.setItem("limit", result.limit);
-      localStorage.setItem("granularity", result.granularity)
-      localStorage.setItem("from", result.from.getTime());
-      localStorage.setItem("to", result.to.getTime());
+      console.log(result);
+      try {
+        localStorage.setItem("limit", result.limit);
+        localStorage.setItem("granularity", result.granularity)
+        localStorage.setItem("from", result.from.getTime());
+        localStorage.setItem("to", result.to.getTime());
+      } catch (e) {
+        window.location.reload();
+      }
+
       window.location.reload();
     });
   }
