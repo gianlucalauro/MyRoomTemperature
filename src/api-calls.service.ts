@@ -28,10 +28,11 @@ export class ApiCallsService {
           for (let i in response.results[0].series[0].values)
             if (response.results[0].series[0].values.hasOwnProperty(i))
             {
-              let roomTemperatureData = {} as RoomTemperatureData;
-              roomTemperatureData.date = response.results[0].series[0].values[i][0]
-              roomTemperatureData.temperature = response.results[0].series[0].values[i][1]
-              roomTemperatureData.humidity = response.results[0].series[0].values[i][2]
+              let roomTemperatureData = {
+                date: response.results[0].series[0].values[i][0],
+                humidity: response.results[0].series[0].values[i][1],
+                temperature: response.results[0].series[0].values[i][2]
+              } as RoomTemperatureData;
 
               this.roomTemperatureDataList.push(roomTemperatureData);
             }
