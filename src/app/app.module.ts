@@ -22,6 +22,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule, MatOptionModule} from "@angular/material/core";
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from "@angular/material/sort";
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 import { NgxEchartsModule } from 'ngx-echarts';
 
@@ -31,6 +32,7 @@ import {FormsModule} from "@angular/forms";
 import {MatSelectModule} from "@angular/material/select";
 import { LineChartComponent } from './widgets/line-chart/line-chart.component';
 import { GaugeComponent } from './widgets/gauge/gauge.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -64,9 +66,11 @@ import { GaugeComponent } from './widgets/gauge/gauge.component';
     MatPaginatorModule,
     MatSortModule,
     MatSelectModule,
+    MatSlideToggleModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')
-    })
+    }),
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

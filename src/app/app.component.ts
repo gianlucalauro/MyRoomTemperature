@@ -1,5 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { faMoon } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,8 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog
 })
 export class AppComponent {
   title = 'MyRoomTemperature';
+
+  faMoon = faMoon;
 
   constructor(public dialog: MatDialog) {
     if (localStorage.getItem("limit") == null || localStorage.getItem("limit") == 'undefined')

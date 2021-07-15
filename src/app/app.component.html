@@ -3,8 +3,11 @@
    &nbsp; &nbsp;
   <span>Dashboard Lauro</span>
 
-  <div style="position: absolute; right: 2%;">
-    <button mat-icon-button style="margin-right: 10px" (click)="openDialogFilter()">
+  <div style="position: absolute; right: 1%;">
+
+    <mat-slide-toggle id="mat-slide-toggle"> <fa-icon [icon]="faMoon"></fa-icon> </mat-slide-toggle>
+
+    <button mat-icon-button style="margin-right: 1px" (click)="openDialogFilter()">
       <mat-icon>filter_list</mat-icon>
     </button>
 
