@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {environment} from "./environments/environment";
 import {HttpClient} from '@angular/common/http';
 
 
@@ -8,7 +7,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class ApiCallsService {
 
-  roomTemperatureBaseURL: string = "http://gianlucalauro.ddns.net:8086/query";
+  roomTemperatureBaseURL: string = "http://gianlucalauro.ddns.net:3000";
 
   from: any = localStorage.getItem("from") + "ms";
   to: any = localStorage.getItem("to") + "ms";
@@ -19,7 +18,7 @@ export class ApiCallsService {
   constructor(private http: HttpClient) { }
 
   getRoomTemperatures() {
-    return this.http.get(`${(this.roomTemperatureBaseURL)}?u=${environment.username}&p=${environment.password}&q=${this.query}`);
+    return this.http.get(`${(this.roomTemperatureBaseURL)}?query=${this.query}`);
   }
 
 }
