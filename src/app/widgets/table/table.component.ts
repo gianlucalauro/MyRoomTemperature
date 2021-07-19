@@ -55,7 +55,8 @@ export class TableComponent implements OnInit {
 
         this.isReady = true;
         this.dataSource.data = this.roomTemperatureDataList;
-        this.dataSource.paginator = this.paginator
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       }
     );
   }

@@ -1,22 +1,22 @@
 <h2 style="text-align: center"> <b> Temperature </b> </h2>
 <p style="text-align: center" *ngIf="isReady">Minima: <b> {{minTemperature}} °C </b>, Media: <b> {{avgTemperature}} °C </b>, Massima: <b>{{maxTemperature}} °C </b> </p>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
   <!-- Date Column -->
   <ng-container matColumnDef="date">
-    <th mat-header-cell *matHeaderCellDef> Data </th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Data </th>
     <td mat-cell *matCellDef="let element"> {{element.date}} </td>
   </ng-container>
 
   <!-- Temperature Column -->
   <ng-container matColumnDef="temperature">
-    <th mat-header-cell *matHeaderCellDef> Gradi </th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Gradi </th>
     <td mat-cell *matCellDef="let element"> {{element.temperature}} °C </td>
   </ng-container>
 
   <!-- Humidity Column -->
   <ng-container matColumnDef="humidity">
-    <th mat-header-cell *matHeaderCellDef> Umidità </th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Umidità </th>
     <td mat-cell *matCellDef="let element"> {{element.humidity}} % </td>
   </ng-container>
 
