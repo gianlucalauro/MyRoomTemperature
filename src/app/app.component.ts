@@ -1,13 +1,18 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { faMoon } from '@fortawesome/free-solid-svg-icons';
+import {
+  enable as enableDarkMode,
+  disable as disableDarkMode,
+} from 'darkreader';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'MyRoomTemperature';
 
   faMoon = faMoon;
@@ -50,6 +55,27 @@ export class AppComponent {
 
       window.location.reload();
     });
+  }
+
+  isDarkTheme: boolean = localStorage.getItem("isDarkTheme") === "dark";
+
+  toggleDarkMode() {
+    if (this.isDarkTheme) {
+      localStorage.setItem("isDarkTheme", "dark");
+      enableDarkMode({
+        brightness: 100,
+        contrast: 100,
+      });
+    }
+    if (!this.isDarkTheme) {
+      localStorage.setItem("isDarkTheme", "light");
+      disableDarkMode();
+    }
+
+  }
+
+  ngOnInit(): void {
+    this.toggleDarkMode();
   }
 
 }

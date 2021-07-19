@@ -5,7 +5,7 @@
 
   <div style="position: absolute; right: 1%;">
 
-    <mat-slide-toggle id="mat-slide-toggle"> <fa-icon [icon]="faMoon"></fa-icon> </mat-slide-toggle>
+    <mat-slide-toggle id="mat-slide-toggle" [(ngModel)]="isDarkTheme" (change)="toggleDarkMode()"> <fa-icon [icon]="faMoon"></fa-icon> </mat-slide-toggle>
 
     <button mat-icon-button style="margin-right: 1px" (click)="openDialogFilter()">
       <mat-icon>filter_list</mat-icon>
