@@ -1,11 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { faMoon } from '@fortawesome/free-solid-svg-icons';
-import {
-  enable as enableDarkMode,
-  disable as disableDarkMode,
-} from 'darkreader';
-
+import { OverlayContainer } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +13,9 @@ export class AppComponent implements OnInit{
 
   faMoon = faMoon;
 
-  constructor(public dialog: MatDialog) {
+  isDarkMode: boolean = true;
+
+  constructor(public dialog: MatDialog, private overlay: OverlayContainer) {
     if (localStorage.getItem("limit") == null || localStorage.getItem("limit") == 'undefined')
       localStorage.setItem("limit", "25");
     if (localStorage.getItem("granularity") == null || localStorage.getItem("granularity") == 'undefined')
@@ -62,14 +60,13 @@ export class AppComponent implements OnInit{
   toggleDarkMode() {
     if (this.isDarkTheme) {
       localStorage.setItem("isDarkTheme", "dark");
-      enableDarkMode({
-        brightness: 100,
-        contrast: 100,
-      });
+      this.isDarkMode = true;
+      this.overlay.getContainerElement().classList.add("alternative");
     }
     if (!this.isDarkTheme) {
       localStorage.setItem("isDarkTheme", "light");
-      disableDarkMode();
+      this.isDarkMode = false;
+      this.overlay.getContainerElement().classList.remove("alternative");
     }
 
   }

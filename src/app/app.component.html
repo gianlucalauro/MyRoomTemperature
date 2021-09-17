@@ -1,25 +1,26 @@
-<mat-toolbar color="primary">
-  <img src="./assets/logoTopBar.png" alt="" style="width: 35px; height: 35px"/>
-   &nbsp; &nbsp;
-  <span>Dashboard Lauro</span>
+<div class="mat-app-background" [class.alternative]="isDarkMode">
+  <mat-toolbar color="primary">
+    <img src="./assets/logoTopBar.png" alt="" style="width: 35px; height: 35px"/>
+    &nbsp; &nbsp;
+    <span>Dashboard Lauro</span>
 
-  <div style="position: absolute; right: 1%;">
+    <div style="position: absolute; right: 1%;">
 
-    <mat-slide-toggle id="mat-slide-toggle" [(ngModel)]="isDarkTheme" (change)="toggleDarkMode()"> <fa-icon [icon]="faMoon"></fa-icon> </mat-slide-toggle>
+      <mat-slide-toggle id="mat-slide-toggle" [(ngModel)]="isDarkTheme" (change)="toggleDarkMode()"> <fa-icon [icon]="faMoon"></fa-icon> </mat-slide-toggle>
 
-    <button mat-icon-button style="margin-right: 1px" (click)="openDialogFilter()">
-      <mat-icon>filter_list</mat-icon>
-    </button>
+      <button mat-icon-button style="margin-right: 1px" (click)="openDialogFilter()">
+        <mat-icon>filter_list</mat-icon>
+      </button>
 
-    <button mat-icon-button (click)="openDialog()">
-      <mat-icon>info</mat-icon>
-    </button>
-  </div>
+      <button mat-icon-button (click)="openDialog()">
+        <mat-icon>info</mat-icon>
+      </button>
+    </div>
 
-</mat-toolbar>
+  </mat-toolbar>
 
-<mat-tab-group>
-  <mat-tab label="Camera"> <app-room-temperature></app-room-temperature> </mat-tab>
-  <mat-tab label="Raspberry"> <app-raspberry> </app-raspberry> </mat-tab>
-</mat-tab-group>
-
+  <mat-tab-group>
+    <mat-tab label="Camera"> <app-room-temperature></app-room-temperature> </mat-tab>
+    <mat-tab label="Raspberry"> <app-raspberry> </app-raspberry> </mat-tab>
+  </mat-tab-group>
+</div>
