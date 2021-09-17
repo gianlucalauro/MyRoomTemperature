@@ -34,6 +34,54 @@ export class LineChartComponent implements OnInit {
     );
   }
 
+  echartsInstance: any;
+
+  onChartInit(ec: any) {
+    this.echartsInstance = ec;
+  }
+
+  refreshChart() {
+    if (this.echartsInstance) {
+      this.echartsInstance.setOption({
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'cross',
+            label: {
+              backgroundColor: '#6a7985'
+            }
+          }
+        },
+        xAxis: {
+          type: 'category',
+          data: this.dateList,
+        },
+        yAxis: {
+          type: 'value',
+        },
+        legend: {
+          data: ['Temperatura', 'Umidità']
+        },
+        series: [
+          {
+            name: 'Temperatura',
+            type: 'line',
+            areaStyle: { color: 'blue', opacity: 0.5},
+            data: this.temperatureList,
+            stack: 'counts',
+          },
+          {
+            name: 'Umidità',
+            type: 'line',
+            areaStyle: { color: 'green', opacity: 0.5},
+            data: this.humidityList,
+            stack: 'counts',
+          },
+        ]
+      })
+    }
+  }
+
   chartOption: EChartsOption = {
     tooltip: {
       trigger: 'axis',

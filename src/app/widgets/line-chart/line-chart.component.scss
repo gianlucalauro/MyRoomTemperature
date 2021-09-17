@@ -1,3 +1,9 @@
 .linechart {
   height: 400px;
 }
+
+.mat-icon-button {
+  position: relative;
+  z-index: 99;
+  float: right;
+}

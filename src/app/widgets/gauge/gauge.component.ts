@@ -38,6 +38,70 @@ export class GaugeComponent implements OnInit {
     );
   }
 
+  minGaugeInstance: any;
+  avgGaugeInstance: any;
+  maxGaugeInstance: any;
+
+  onMinGaugeInit(ec: any) {
+    this.minGaugeInstance = ec;
+  }
+  onAvgGaugeInit(ec: any) {
+    this.avgGaugeInstance = ec;
+  }
+  onMaxGaugeInit(ec: any) {
+    this.maxGaugeInstance = ec;
+  }
+
+  refreshChart() {
+    if (this.minGaugeInstance) {
+      this.minGaugeInstance.setOption({
+        color: "green",
+        legend: {
+          data: ['Umidità Minima %']
+        },
+        series: [
+          {
+            name: 'Umidità Minima %',
+            type: 'gauge',
+            data: this.minHumidity,
+          },
+        ],
+      })
+    }
+
+    if (this.avgGaugeInstance) {
+      this.avgGaugeInstance.setOption({
+        color: "green",
+        legend: {
+          data: ['Umidità Media %']
+        },
+        series: [
+          {
+            name: 'Umidità Media %',
+            type: 'gauge',
+            data: this.avgHumidity,
+          },
+        ],
+      })
+    }
+
+    if (this.maxGaugeInstance) {
+      this.maxGaugeInstance.setOption({
+        color: "green",
+        legend: {
+          data: ['Umidità Massima %']
+        },
+        series: [
+          {
+            name: 'Umidità Massima %',
+            type: 'gauge',
+            data: this.maxHumidity,
+          },
+        ],
+      })
+    }
+  }
+
   gaugeMinHumidity: EChartsOption = {
     color: "green",
     legend: {
