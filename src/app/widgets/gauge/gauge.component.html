@@ -1,4 +1,4 @@
-<button mat-icon-button (click)="refreshChart()"> <mat-icon>replay</mat-icon> </button>
+<button mat-icon-button (click)="refreshChart()" [@rotatedState]='state'> <mat-icon>replay</mat-icon> </button>
 <div style="text-align: center; margin-top: 50px;">
   <div echarts [options]="gaugeMinHumidity" (chartInit)="onMinGaugeInit($event)" class="gauge" id="gaugeMinHumidity"></div>
   <div echarts [options]="gaugeAvgHumidity" (chartInit)="onAvgGaugeInit($event)" class="gauge" id="gaugeAvgHumidity"></div>

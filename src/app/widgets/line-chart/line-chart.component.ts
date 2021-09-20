@@ -1,15 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiCallsService } from "../../../api-calls.service";
 import { EChartsOption } from 'echarts';
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-line-chart',
   templateUrl: './line-chart.component.html',
-  styleUrls: ['./line-chart.component.scss']
+  styleUrls: ['./line-chart.component.scss'],
+  animations: [
+    trigger('rotatedState', [
+      state('default', style({ transform: 'rotate(0)' })),
+      state('rotated', style({ transform: 'rotate(-360deg)' })),
+      transition('default => rotated', animate('300ms ease-in')),
+      transition('rotated => default', animate('300ms ease-out'))
+    ])
+  ]
 })
 export class LineChartComponent implements OnInit {
 
   constructor(private apiCallsService: ApiCallsService) { }
+
+  state: string = 'default';
+  rotate() {
+    this.state = (this.state === 'default' ? 'rotated' : 'default');
+  }
 
   dateList = [];
   temperatureList = [];
@@ -41,6 +55,7 @@ export class LineChartComponent implements OnInit {
   }
 
   refreshChart() {
+    this.rotate();
     if (this.echartsInstance) {
       this.echartsInstance.setOption({
         tooltip: {

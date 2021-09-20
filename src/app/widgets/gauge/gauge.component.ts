@@ -1,15 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiCallsService } from "../../../api-calls.service";
 import {EChartsOption} from "echarts";
+import {animate, style, transition, trigger, state} from "@angular/animations";
 
 @Component({
   selector: 'app-gauge',
   templateUrl: './gauge.component.html',
-  styleUrls: ['./gauge.component.scss']
+  styleUrls: ['./gauge.component.scss'],
+  animations: [
+    trigger('rotatedState', [
+      state('default', style({ transform: 'rotate(0)' })),
+      state('rotated', style({ transform: 'rotate(-360deg)' })),
+      transition('default => rotated', animate('300ms ease-in')),
+      transition('rotated => default', animate('300ms ease-out'))
+    ])
+  ]
 })
 export class GaugeComponent implements OnInit {
 
   constructor(private apiCallsService: ApiCallsService) { }
+
+  state: string = 'default';
+  rotate() {
+    this.state = (this.state === 'default' ? 'rotated' : 'default');
+  }
 
   humidityList = [];
 
@@ -53,6 +67,7 @@ export class GaugeComponent implements OnInit {
   }
 
   refreshChart() {
+    this.rotate();
     if (this.minGaugeInstance) {
       this.minGaugeInstance.setOption({
         color: "green",
