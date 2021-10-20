@@ -40,19 +40,6 @@ export class AppComponent implements OnInit{
         to: localStorage.getItem("to")
       }
     });
-
-    dialogRef.afterClosed().subscribe(result => {
-      try {
-        localStorage.setItem("limit", result.limit);
-        localStorage.setItem("granularity", result.granularity)
-        localStorage.setItem("from", result.from.getTime());
-        localStorage.setItem("to", result.to.getTime());
-      } catch (e) {
-        window.location.reload();
-      }
-
-      window.location.reload();
-    });
   }
 
   isDarkTheme: boolean = localStorage.getItem("isDarkTheme") === "dark";
