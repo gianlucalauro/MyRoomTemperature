@@ -7,7 +7,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class ApiCallsService {
 
-  roomTemperatureBaseURL: string = "http://gianlucalauro.ddns.net:3000";
+  roomTemperatureBaseURL: string = "http://gianlucalauro.duckdns.org:3000";
 
   from: any = localStorage.getItem("from") + "ms";
   to: any = localStorage.getItem("to") + "ms";
