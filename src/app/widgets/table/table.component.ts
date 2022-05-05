@@ -3,7 +3,7 @@ import {ApiCallsService} from "../../../api-calls.service";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
-
+import {AppComponent} from "../../app.component";
 
 @Component({
   selector: 'app-table',
@@ -27,7 +27,7 @@ export class TableComponent implements OnInit {
 
   isReady: boolean = false;
 
-  constructor(private apiCallsService: ApiCallsService) { }
+  constructor(private apiCallsService: ApiCallsService, private appComponent: AppComponent) { }
 
   ngOnInit(): void {
     this.apiCallsService.getRoomTemperatures().subscribe(
@@ -57,6 +57,9 @@ export class TableComponent implements OnInit {
         this.dataSource.data = this.roomTemperatureDataList;
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
+      },
+      error => {
+        this.appComponent.openErrorDialog();
       }
     );
   }

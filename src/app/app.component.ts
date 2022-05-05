@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
-import { faMoon } from '@fortawesome/free-solid-svg-icons';
+import { faMoon, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
 import { OverlayContainer } from '@angular/cdk/overlay';
 
 @Component({
@@ -26,7 +26,12 @@ export class AppComponent implements OnInit{
       localStorage.setItem("to", String(Date.now()));
   }
 
-  openDialog() {
+  openErrorDialog() {
+    const dialogRef = this.dialog.open(DialogErrorContent);
+    dialogRef.afterClosed().subscribe();
+  }
+
+  openInfoDialog() {
     const dialogRef = this.dialog.open(DialogInfoContent);
     dialogRef.afterClosed().subscribe();
   }
@@ -62,6 +67,14 @@ export class AppComponent implements OnInit{
     this.toggleDarkMode();
   }
 
+}
+
+@Component({
+  selector: 'dialog-error-content',
+  templateUrl: 'dialog-error-content.html',
+})
+export class DialogErrorContent {
+  faExclamationTriangle = faExclamationTriangle;
 }
 
 @Component({
