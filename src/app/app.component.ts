@@ -79,8 +79,15 @@ export class DialogFilterContent {
     public dialogRef: MatDialogRef<DialogFilterContent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
-  onNoClick(): void {
-    this.dialogRef.close();
+  saveFilter() {
+    this.dialogRef.afterClosed().subscribe(result => {
+      localStorage.setItem("limit", result.limit);
+      localStorage.setItem("granularity", result.granularity)
+      typeof result.from == "object" ? localStorage.setItem("from", result.from.getTime()) : null;
+      typeof result.to == "object" ? localStorage.setItem("to", result.to.getTime()) : null;
+
+      window.location.reload();
+    });
   }
 }
 
