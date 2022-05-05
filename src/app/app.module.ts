@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DialogContent, DialogFilterContent } from './app.component';
+import { DialogInfoContent, DialogFilterContent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -38,7 +38,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   declarations: [
     AppComponent,
     TableComponent,
-    DialogContent,
+    DialogInfoContent,
     DialogFilterContent,
     RoomTemperatureComponent,
     RaspberryComponent,

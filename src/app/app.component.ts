@@ -27,7 +27,7 @@ export class AppComponent implements OnInit{
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(DialogContent);
+    const dialogRef = this.dialog.open(DialogInfoContent);
     dialogRef.afterClosed().subscribe();
   }
 
@@ -65,10 +65,10 @@ export class AppComponent implements OnInit{
 }
 
 @Component({
-  selector: 'dialog-content',
-  templateUrl: 'dialog-content.html',
+  selector: 'dialog-info-content',
+  templateUrl: 'dialog-info-content.html',
 })
-export class DialogContent {}
+export class DialogInfoContent {}
 
 @Component({
   selector: 'dialog-filter-content',
