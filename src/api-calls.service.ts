@@ -20,7 +20,7 @@ export class ApiCallsService {
   getRoomTemperatures() {
     return this.http.get(`${(this.roomTemperatureBaseURL)}?q=${this.query}`, {
       headers: new HttpHeaders({
-        'Authorization': 'Token IzxTjRxJZcUWWUpIgdRLPmZLfdBPiqammbDsFT6fpSGmY0o01VjrORqhS-L6M2COtN-DnO4bK5b-J92x1ncPrg=='
+        'Authorization': 'Token _6wxJGsthUtzEPLIyj0ybWODNHTrUS8SlFCWFWNs0jCjnW0ZU-FLkfb8mJSDpEZ625zkcF4WJNi-ZxZir0BCgQ=='
       })
     });
   }
